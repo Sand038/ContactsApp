@@ -17,6 +17,12 @@
                 console.log(response);
             });
         };
+
+        self.saveNewContact = function (contact) {
+            return $http.post('http://localhost:3000/contacts/', contact).then(function (response) {
+                console.log(response);
+            });
+        };
     });
 
 })();

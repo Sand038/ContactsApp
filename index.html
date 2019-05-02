@@ -15,7 +15,9 @@
 
 <body>
 <div class="container" ng-controller="ContactsCtrl as main">
-    <h1>{{main.getHeader()}}</h1>
+    <h1>{{main.getHeader()}}</h1><p>
+    <button class="btn btn-info" ng-click="main.addContact()">Add New Contact</button>
+</p>
     <div class="row">
         <div class="col-md-6">
             <ul class="list-group">
@@ -30,18 +32,24 @@
             <div class="media">
                 <div class="media-left">
                     <a href="#">
-                        <img src="{{main.selectedElement.picture.medium}}" alt="">
+                        <img src="{{main.selectedElement.picture.large}}" alt="">
                     </a>
                 </div>
                 <div class="media-body">
-                    <h3 class="media-heading">{{main.selectedElement.name.first + ' ' + main.selectedElement.name.last}}
-                    </h3>
-                    <button class="btn btn-info" ng-hide="main.editMode" ng-click="main.toggleEditMode()">Edit</button>
-                    <button class="btn btn-info" ng-show="main.editMode" ng-click="main.saveContact()">Save</button>
-                    <button class="btn btn-secondary" ng-show="main.editMode" ng-click="main.toggleEditMode()">Cancel</button>
-                </div>
-                <div>
-                    <label>Location</label>
+                    <h3 class="media-heading">{{main.selectedElement.name.first + ' ' + main.selectedElement.name.last}}</h3>
+                    <p>
+                        <label for="firstName">First Name:</label>
+                        <span ng-hide="main.editMode">{{main.selectedElement.name.first}}</span>
+                        <input id="firstName" ng-show="main.editMode" type="text" ng-model="main.selectedElement.name.first">
+                    </p>
+                    <p>
+                        <label for="lastName">Last Name:</label>
+                        <span ng-hide="main.editMode">{{main.selectedElement.name.last}}</span>
+                        <input id="lastName" ng-show="main.editMode" type="text" ng-model="main.selectedElement.name.last">
+                    </p>
+                    <p>
+                        <label>Location</label>
+                    </p>
                     <p>
                         <label for="street">Street:</label>
                         <span ng-hide="main.editMode">{{main.selectedElement.location.street}}</span>
@@ -57,13 +65,14 @@
                         <span ng-hide="main.editMode">{{main.selectedElement.location.postcode}}</span>
                         <input id="postcode" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.postcode">
                     </p>
-                </div>
-                <div>
-                    <label for="cell">Phone</label>
                     <p>
+                        <label for="cell">Phone</label>
                         <span ng-hide="main.editMode">{{ main.selectedElement.cell }}</span>
                         <input id="cell" ng-show="main.editMode" type="text" ng-model="main.selectedElement.cell">
                     </p>
+                    <button class="btn btn-info" ng-hide="main.editMode" ng-click="main.toggleEditMode()">Edit</button>
+                    <button class="btn btn-info" ng-show="main.editMode" ng-click="main.saveContact()">Save</button>
+                    <button class="btn btn-secondary" ng-show="main.editMode" ng-click="main.cancel()">Cancel</button>
                 </div>
             </div>
         </div>
