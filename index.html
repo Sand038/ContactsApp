@@ -19,7 +19,7 @@
     <div class="row">
         <div class="col-md-6">
             <ul class="list-group">
-                <li class="list-group-item" ng-repeat="contact in main.contacts" ng-click="main.selectContact($index)">
+                <li ng-class="{'list-group-item': true,'active': main.selectedIndex == $index}" ng-repeat="contact in main.contacts" ng-click="main.selectContact($index)">
                     <span>{{ contact.name.first + ' ' + contact.name.last }}</span>
                 </li>
             </ul>
@@ -36,32 +36,32 @@
                 <div class="media-body">
                     <h3 class="media-heading">{{main.selectedElement.name.first + ' ' + main.selectedElement.name.last}}
                     </h3>
-                    <button ng-hide="main.editMode" ng-click="main.toggleEditMode()">Edit</button>
-                    <button ng-show="main.editMode" ng-click="main.saveContact()">Save</button>
-                    <button ng-show="main.editMode" ng-click="main.toggleEditMode()">Cancel</button>
+                    <button class="btn btn-info" ng-hide="main.editMode" ng-click="main.toggleEditMode()">Edit</button>
+                    <button class="btn btn-info" ng-show="main.editMode" ng-click="main.saveContact()">Save</button>
+                    <button class="btn btn-secondary" ng-show="main.editMode" ng-click="main.toggleEditMode()">Cancel</button>
                 </div>
                 <div>
-                    <h4>Location</h4>
+                    <label>Location</label>
                     <p>
-                        Street:
-                        <label for="street" ng-hide="main.editMode">{{main.selectedElement.location.street}}</label>
+                        <label for="street">Street:</label>
+                        <span ng-hide="main.editMode">{{main.selectedElement.location.street}}</span>
                         <input id="street" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.street">
                     </p>
                     <p>
-                        City:
-                        <label for="city" ng-hide="main.editMode">{{main.selectedElement.location.city}}</label>
+                        <label for="city">City:</label>
+                        <span ng-hide="main.editMode">{{main.selectedElement.location.city}}</span>
                         <input id="city" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.city">
-                    </p>a
+                    </p>
                     <p>
-                        Post Code:
-                        <label for="postcode" ng-hide="main.editMode">{{main.selectedElement.location.postcode}}</label>
+                        <label for="postcode">Post Code:</label>
+                        <span ng-hide="main.editMode">{{main.selectedElement.location.postcode}}</span>
                         <input id="postcode" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.postcode">
                     </p>
                 </div>
                 <div>
-                    <h4>Phone</h4>
+                    <label for="cell">Phone</label>
                     <p>
-                        <label for="cell" ng-hide="main.editMode">{{ main.selectedElement.cell }}</label>
+                        <span ng-hide="main.editMode">{{ main.selectedElement.cell }}</span>
                         <input id="cell" ng-show="main.editMode" type="text" ng-model="main.selectedElement.cell">
                     </p>
                 </div>

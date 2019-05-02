@@ -10,6 +10,7 @@
 
         this.selectContact = function (index) {
             this.selectedElement = this.contacts[index];
+            this.selectedIndex = index;
             clearMessage();
         };
 
