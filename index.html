@@ -1,4 +1,4 @@
-<html ng-app="ContactsApp">
+<html ng-app="ContactsApp" lang="en">
 
 <head>
     <title>Contacts App</title>
@@ -8,15 +8,15 @@
     <script src="services/config.service.js"></script>
     <script src="services/data.service.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"
-        integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+          integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
-        integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+          integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
 </head>
 
 <body>
-    <div class="container" ng-controller="ContactsCtrl as main">
-        <h1>{{main.getHeader()}}</h1>
-        <div class="row"></div>
+<div class="container" ng-controller="ContactsCtrl as main">
+    <h1>{{main.getHeader()}}</h1>
+    <div class="row">
         <div class="col-md-6">
             <ul class="list-group">
                 <li class="list-group-item" ng-repeat="contact in main.contacts" ng-click="main.selectContact($index)">
@@ -25,10 +25,12 @@
             </ul>
         </div>
         <div class="col-md-6">
+            <div class="alert alert-success" ng-if="main.successMessage">{{main.successMessage}}</div>
+            <div class="alert alert-danger" ng-if="main.dangerMessage">{{main.dangerMessage}}</div>
             <div class="media">
                 <div class="media-left">
                     <a href="#">
-                        <img src="{{main.selectedElement.picture.medium}}"></img>
+                        <img src="{{main.selectedElement.picture.medium}}" alt="">
                     </a>
                 </div>
                 <div class="media-body">
@@ -36,40 +38,37 @@
                     </h3>
                     <button ng-hide="main.editMode" ng-click="main.toggleEditMode()">Edit</button>
                     <button ng-show="main.editMode" ng-click="main.saveContact()">Save</button>
+                    <button ng-show="main.editMode" ng-click="main.toggleEditMode()">Cancel</button>
                 </div>
                 <div>
-                    <p>
-                        <h4>Location</h4>
-                    </p>
+                    <h4>Location</h4>
                     <p>
                         Street:
-                        <span ng-hide="main.editMode">{{main.selectedElement.location.street}}</span>
-                        <input ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.street">
+                        <label for="street" ng-hide="main.editMode">{{main.selectedElement.location.street}}</label>
+                        <input id="street" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.street">
                     </p>
                     <p>
                         City:
-                        <span ng-hide="main.editMode">{{main.selectedElement.location.city}}</span>
-                        <input ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.city">
-                    </p>
+                        <label for="city" ng-hide="main.editMode">{{main.selectedElement.location.city}}</label>
+                        <input id="city" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.city">
+                    </p>a
                     <p>
                         Post Code:
-                        <span ng-hide="main.editMode">{{main.selectedElement.location.postcode}}</span>
-                        <input ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.postcode">
+                        <label for="postcode" ng-hide="main.editMode">{{main.selectedElement.location.postcode}}</label>
+                        <input id="postcode" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.postcode">
                     </p>
                 </div>
                 <div>
+                    <h4>Phone</h4>
                     <p>
-                        <h4>Phone</h4>
-                    </p>
-                    <p>
-                        <span ng-hide="main.editMode">{{ main.selectedElement.cell }}</span>
-                        <input ng-show="main.editMode" type="text" ng-model="main.selectedElement.cell">
+                        <label for="cell" ng-hide="main.editMode">{{ main.selectedElement.cell }}</label>
+                        <input id="cell" ng-show="main.editMode" type="text" ng-model="main.selectedElement.cell">
                     </p>
                 </div>
             </div>
         </div>
     </div>
-    </div>
+</div>
 </body>
 
 </html>

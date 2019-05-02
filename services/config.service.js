@@ -6,5 +6,5 @@
         this.name = 'Contacts App';
         this.author = 'sand';
     });
-    
+
 })();

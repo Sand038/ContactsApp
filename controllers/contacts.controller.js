@@ -10,15 +10,17 @@
 
         this.selectContact = function (index) {
             this.selectedElement = this.contacts[index];
-        }
+            clearMessage();
+        };
 
         this.getHeader = function () {
             return ConfigService.name;
-        }
+        };
 
         this.toggleEditMode = function () {
             this.editMode = !this.editMode;
-        }
+            clearMessage();
+        };
 
         DataService.getContacts().then(function (data) {
             self.contacts = data;
@@ -27,7 +29,16 @@
 
         this.saveContact = function () {
             this.toggleEditMode();
-            DataService.saveContact(this.selectedElement);
+            DataService.saveContact(this.selectedElement).then(function () {
+                self.successMessage = 'Data successfully updated';
+            }, function () {
+                self.dangerMessage = 'There was an error. Please try again';
+            });
+        };
+
+        function clearMessage() {
+            self.successMessage = undefined;
+            self.dangerMessage = undefined;
         }
     }
 })();
