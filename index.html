@@ -11,6 +11,7 @@
           integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css"
           integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles/main.css">
 </head>
 
 <body>
@@ -39,12 +40,12 @@
                     <h3 class="media-heading">{{main.selectedElement.name.first + ' ' + main.selectedElement.name.last}}</h3>
                     <p>
                         <label for="firstName">First Name:</label>
-                        <span ng-hide="main.editMode">{{main.selectedElement.name.first}}</span>
+                        <span class="text-value" ng-hide="main.editMode">{{main.selectedElement.name.first}}</span>
                         <input id="firstName" ng-show="main.editMode" type="text" ng-model="main.selectedElement.name.first">
                     </p>
                     <p>
                         <label for="lastName">Last Name:</label>
-                        <span ng-hide="main.editMode">{{main.selectedElement.name.last}}</span>
+                        <span class="text-value" ng-hide="main.editMode">{{main.selectedElement.name.last}}</span>
                         <input id="lastName" ng-show="main.editMode" type="text" ng-model="main.selectedElement.name.last">
                     </p>
                     <p>
@@ -52,27 +53,27 @@
                     </p>
                     <p>
                         <label for="street">Street:</label>
-                        <span ng-hide="main.editMode">{{main.selectedElement.location.street}}</span>
+                        <span class="text-value" ng-hide="main.editMode">{{main.selectedElement.location.street}}</span>
                         <input id="street" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.street">
                     </p>
                     <p>
                         <label for="city">City:</label>
-                        <span ng-hide="main.editMode">{{main.selectedElement.location.city}}</span>
+                        <span class="text-value" ng-hide="main.editMode">{{main.selectedElement.location.city}}</span>
                         <input id="city" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.city">
                     </p>
                     <p>
                         <label for="postcode">Post Code:</label>
-                        <span ng-hide="main.editMode">{{main.selectedElement.location.postcode}}</span>
+                        <span class="text-value" ng-hide="main.editMode">{{main.selectedElement.location.postcode}}</span>
                         <input id="postcode" ng-show="main.editMode" type="text" ng-model="main.selectedElement.location.postcode">
                     </p>
                     <p>
                         <label for="cell">Phone</label>
-                        <span ng-hide="main.editMode">{{ main.selectedElement.cell }}</span>
+                        <span class="text-value" ng-hide="main.editMode">{{ main.selectedElement.cell }}</span>
                         <input id="cell" ng-show="main.editMode" type="text" ng-model="main.selectedElement.cell">
                     </p>
-                    <button class="btn btn-info" ng-hide="main.editMode" ng-click="main.toggleEditMode()">Edit</button>
-                    <button class="btn btn-info" ng-show="main.editMode" ng-click="main.saveContact()">Save</button>
-                    <button class="btn btn-secondary" ng-show="main.editMode" ng-click="main.cancel()">Cancel</button>
+                    <button class="btn btn-info contact-button" ng-hide="main.editMode" ng-click="main.toggleEditMode()">Edit</button>
+                    <button class="btn btn-info contact-button" ng-show="main.editMode" ng-click="main.saveContact()">Save</button>
+                    <button class="btn btn-secondary contact-button" ng-show="main.editMode" ng-click="main.cancel()">Cancel</button>
                 </div>
             </div>
         </div>
